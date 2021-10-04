@@ -1,6 +1,7 @@
+String cron_string = BRANCH_NAME == "master" ? "H/3 * * * *" : ""
 pipeline {
     agent any
-
+    triggers { cron(cron_string) }
     stages {
         stage('Build') {
             steps {
